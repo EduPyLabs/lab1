@@ -10,69 +10,75 @@
 
 **Для виконання нульового завдання та ознайомлення з гайдами з інсталяції Python, Git та рекомендаціями щодо IDE, будь ласка, перейдіть за цим [посиланням](GUID.md).**
 
+## Інструкція для запуску тестів
+
+1. **Переконайтесь, що ви маєте всі необхідні файли**:
+   - `lab1_1.py`, `lab1_2.py` з каркасом функцій.
+   - `test_file1.py`, `test_file2.py` з тестами для функцій.
+   - `requirements.txt` з переліком залежностей.
+
+2. **Встановіть необхідні бібліотеки**:
+   - Відкрийте термінал або командний рядок у директорії з файлами.
+   - Виконайте команду:
+     ```bash
+     pip install -r requirements.txt
+     ```
+     Ця команда встановить бібліотеку `pytest`, яка потрібна для запуску тестів.
+
+3. **Запустіть тести**:
+   - Після реалізації функцій, у тій самій директорії виконайте команду:
+     ```bash
+     pytest test_file1.py
+     ```
+     Ця команда запустить всі тести, що знаходяться у файлі `test_file1.py`, те саме і для тестів у файлі `test_file2.py`
+
+     Для запуску усіх тестів у проєкті можете скористатись командою:
+
+     ```bash
+     pytest
+     ```
+
+5. **Перевірка результатів**:
+   - Після виконання команди `pytest` ви побачите результати тестування у терміналі. Якщо всі тести пройдені успішно, ви побачите повідомлення про це. Якщо деякі тести не пройдені, буде показано детальну інформацію про помилки.
+
+
 ## Завдання 1
 
-Користувач вводить трьохзначне додатнє число з клавіатури. Потрібно порахувати:
-* суму цифр цього числа
-* модуль різниці цього числа та числа записаного тими ж цифрами, але у зворотньому порядку
-* частку самого числа і суми його цифр (результат заокруглити до тисячних)
+Користувач вводить тризначне додатнє число з клавіатури. Необхідно реалізувати такі функції:
 
-Результат роботи програми потрібно вивести у вигляді тексту (замість ... мають бути відповідні числа):
-```
-The sum of digits of the number ... is ...;
-the absolute value of the difference of the number and reversed number is ...;
-the fraction of the number ... and the sum of its digits is ...  
-```
+1. `is_positive_triple_number(number: int) -> bool:`
+
+    Ця функція перевіряє, чи є введене число додатнім та тризначним.
+
+3. `digits_sum(number: int) -> int:`
+
+    Ця функція рахує та повертає суму цифр введеного числа.
+
+5. `number_difference(number: int) -> int:`
+
+    Ця функція обчислює модуль різниці між введеним числом та числом, яке утворюється шляхом перестановки його цифр у зворотному порядку.
+
+4. `number_ratio(number: int) -> float:`
+
+    Ця функція обчислює частку введеного числа і суми його цифр, заокруглюючи результат до тисячних.
+
+> Каркас для виконання даного завдання є у файлі lab1_1.py
+
+   Якщо введене число відповідає умовам, програма повинна вивести на екран результати обчислень у вигляді:
+
+   `сума цифр`, `модуль різниці`, `частка числа і суми цифр`
+
+   Якщо ж число не відповідає умовам, програма повинна вивести повідомлення:
+
+   `"Input number must be positive and number of digits must be 3"`.
 
 Наприклад з клавіатури введено число: 127.
 На екран має бути виведений результат:
 ```
-The sum of digits of the number 127 is 10;
-the absolute value of the difference of the number and reversed number is 594;
-the fraction of the number 127 and the sum of its digits is 12.7.
+10 594 12.7
 ```
 
-Достести:
-```python
-import doctest
-
-
-def number_operations(number: int) -> str:
-  
-  """
-  Finds the sum of digits of the number, 
-  the absolute value of the difference of the number and reversed number
-  and the fraction of the number and the sum of its digits
-    
-  :param number: int 
-    
-  >>> number_operations(124)
-  The sum of digits of the number 124 is 7;
-  the absolute value of the difference of the number and reversed number is 594;
-  the fraction of the number 124 and the sum of its digits is 17.714.
-  >>> number_operations(792)
-  The sum of digits of the number 792 is 18;
-  the absolute value of the difference of the number and reversed number is 495;
-  the fraction of the number 792 and the sum of its digits is 44.0.
-  >>> number_operations(55)
-  Number of digits must be 3
-  >>> number_operations(-124)
-  Number must be positive
-  >>> number_operations(100)
-  The sum of digits of the number 100 is 1;
-  the absolute value of the difference of the number and reversed number is 99;
-  the fraction of the number 100 and the sum of its digits is 100.
-  """
-
-  # Тут має бути код, який реалізує Ваш алгоритм роботи з введеним числом
-
-
-# Тут має бути код, який реалізує введення числа з клавіатури і його запису у змінну number (пам'ятайте про тип даних)
-
-number_operations(number)
-
-doctest.testmod()
-```
+> Виконайте команду `pytest test_file1.py`, таким чином, ви зможете перевірити, чи правильно реалізували функції у файлі.
 
 ## Ззадання 2
 
